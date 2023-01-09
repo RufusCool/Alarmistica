@@ -1,6 +1,3 @@
-# Alarmistica
-
-
 # Monitoramento - Prometheus -  Grafana e Zabbix
 
 Para aplicar os manifestos em seu cluster acesse a raiz do repo e Execute:
