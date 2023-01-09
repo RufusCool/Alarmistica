@@ -1,13 +1,12 @@
 # Alarmistica
 
-```
-# Monitoramento - Prometheus e Grafana
 
-Para aplicar os manifestos em seu cluster 
-Acesse a raiz do repo e Execute:
+# Monitoramento - Prometheus -  Grafana e Zabbix
 
-```
+Para aplicar os manifestos em seu cluster acesse a raiz do repo e Execute:
+
 Caso não possua ainda a NS monitoring criada, execute o comando abaixo para criar!
+```
 
 kubectl create namespace monitoring
 
