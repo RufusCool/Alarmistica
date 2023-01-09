@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+     containers:
+       - name: web
+         image: rampss/pedelogo-catalogo:v1.0.0
+         ports:
+          - containerPort: 80
+         env:
+          - name: Mongo__Host
+            value: mongodb-service #nesse caso eu utilizo o nome do meu service que é por onde eu vou acessar e não igual ao compose que eu dei o nome no compose e outro ponto a se validar é que a label está como nome de mongodb
+          - name: Mongo__User
+            value: mongouser
+          - name: Mongo__Password
+            value: mongopwd
+          - name: Mongo__Port
+            value: "27017"
+          - name: Mongo__DataBase
+            value: admin
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-service
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 80
+  type: NodePort
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: web.192.168.15.43.nip.io
+      http:
+        paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: web-service
+              port:
+                number: 80
+
