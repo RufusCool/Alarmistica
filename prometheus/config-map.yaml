@@ -105,9 +105,9 @@ data:
           action: replace
           target_label: kubernetes_pod_name
       
-      - job_name: 'kube-state-metrics'
-        static_configs:
-          - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
+          #      - job_name: 'kube-state-metrics'
+          #        static_configs:
+          #          - targets: ['kube-state-metrics.kube-system.svc.cluster.local:8080']
 
       - job_name: 'kubernetes-cadvisor'
 
@@ -170,13 +170,3 @@ data:
           - targets: ["web.192.168.15.43.nip.io"]
             labels:
               grupo: "webapi"
-
-      - job_name: 'MongoDBExporter'
-        scrape_interval: 5s
-        scrape_timeout: 1s
-        scheme: http
-        metrics_path: /metrics
-        static_configs:
-          - targets: ['exporter.192.168.15.43.nip.io:9216']
-            labels:
-              grupo: "MongoDB"
