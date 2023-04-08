@@ -41,6 +41,10 @@ ID: 12740
 MongoDB
 Importe o dashboard do GrafanaLabs (https://grafana.com/grafana/dashboards/2583-mongodb/)
 ID: 2583
+
+ASP.NET Core
+Importar o dashboard do GrafanaLabs (https://grafana.com/grafana/dashboards/10915)
+ID: 10915
 ```
 
 
