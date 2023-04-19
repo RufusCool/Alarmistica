@@ -47,12 +47,12 @@ df -h
 Após acessar o container, iremos criar um arquivo para testar a persistência do volume, seguindo os seguinte passos abaixo!
 ---
 Exibe o nome do seu host
-# echo $(hostname)
+echo $(hostname)
 echo-7b7478b648-jkd8h
 
 Cria um arquivo dentro do path com o nome do host
-# echo $(hostname) > /data/hostname.txt
-# exit
+echo $(hostname) > /data/hostname.txt
+exit
 ---
 
 Após sair do container, execute o comando abaixo para visualizar o arquivo criado.
@@ -87,16 +87,17 @@ kubectl exec -it echo-7b7478b648-98sbf sh
 Valide se os dados são persistidos
 ---
 Exibe o nome do seu novo host
-# hostname
+hostname
 echo-7b7478b648-98sbf
 
 Exibe o host do seu antigo container mapeado dentro do PVC 
-# cat /data/hostname.txt
+cat /data/hostname.txt
 echo-7b7478b648-jkd8h
 ---
 
 Documentação Oficial do k3d e k8s sobre PV e PVC
 ---
 https://k3d.io/v5.4.9/
+
 https://kubernetes.io/pt-br/docs/concepts/storage/persistent-volumes/
 ---
