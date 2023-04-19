@@ -1,9 +1,9 @@
 # Workshop - PersistentVolume & PersistentVolumeClaim
 
 
-Para aplicar os manifestos em seu cluster, seguida os passos abaixo:
+Para aplicar os manifestos em seu cluster, seguir os passos abaixo:
  
-Em sua VM, criei um path com o seguinte comando para podermos atrelar ao k3d nos próximos passos
+Em sua VM, criei um path com o seguinte comando para podermos atrelar ao k3d nos próximos passos.
 ```
 mkdir -p /data/k3dvol
 ```
@@ -23,22 +23,22 @@ Caso queira apenas criar com um worker para teste, execute o comando abaixo.
 k3d cluster create bifrost-prd -p "80:30000@loadbalancer" --volume /data/k3dvol:/data/k3dvol
 ```
 
-Aplicar manifesto
+Aplicar manifesto:
 ```
 kubectl apply -f deployment-pvc.yml
 ```
 
-Visualizar PersistentVolume & PersistentVolumeClaim
+Visualizar PersistentVolume & PersistentVolumeClaim:
 ```
 kubectl get pv,pvc
 ```
 
-Visualizar pod criado
+Visualizar pod criado:
 ```
 kubectl get pods
 ```
 
-Abrir conexão com terminal interativo no container e validar o volume montado no path /data do container
+Abrir conexão com terminal interativo no container e validar o volume montado no path /data do container:
 ```
 kubectl exec -it nomedopodcriado sh
 df -h
@@ -60,7 +60,7 @@ Após sair do container, execute o comando abaixo para visualizar o arquivo cria
 cat /data/k3dvol/hostname.txt
 ```
 
-Observe o host em que o pod está sendo executado
+Observe o host em que o pod está sendo executado:
 ```
 Visualiza o pod e em qual worker está sendo executado
 kubectl get pods -o wide
@@ -74,17 +74,17 @@ Agora iremos excluir o pod para validarmos a persistência.
 kubectl delete pod/echo-7b7478b648-jkd8h
 ```
 
-Aguarde até que o pod seja reprogramado novamente e verifique se o pod está sendo executado em um nó diferente
+Aguarde até que o pod seja reprogramado novamente e verifique se o pod está sendo executado em um nó diferente.
 ```
 kubectl get pods -o wide
 ```
 
-Execute novamente o exec para acessar o novo pod
+Execute novamente o exec para acessar o novo pod.
 ```
 kubectl exec -it echo-7b7478b648-98sbf sh
 ```
 
-Valide se os dados são persistidos
+Valide se os dados são persistidos:
 ```
 Exibe o nome do seu novo host
 hostname
@@ -95,7 +95,7 @@ cat /data/hostname.txt
 echo-7b7478b648-jkd8h
 ```
 
-Documentação Oficial do k3d e k8s sobre PV e PVC
+Documentação Oficial do k3d e k8s sobre PV e PVC:
 ```
 https://k3d.io/v5.4.9/
 
